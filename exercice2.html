@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="jquery-3.2.1.js"></script>
+    <title>Exercice 2</title>
+  </head>
+  <body>
+    <h2>Notez vos 5 dernières notes</h2>
+    <form>
+      <label for="victoire">1ere Note : </label><input type="text" name="nom" value="0" id="firstNote" />
+      <label for="secondNote">2eme note : </label><input type="text" name="secondNote" value="0" id="secondNote" />
+      <label for="thirdNote">3ème Note : </label><input type="text" name="thirdNote" value="0" id="thirdNote" />
+      <label for="fourthNote">4ème Note : </label><input type="text" name="fourthNote" value="0" id="fourthNote" />
+      <label for="lastNote">Dernière Note : </label><input type="text" name="lastNote" value="0" id="lastNote" />
+      <button type="button" name="button" id="submit">calculer la moyenne</button>
+    </form>
+    <span id="appreciation"></span>
+    <script>
+    $(function(){
+      $('#submit').click(function(){
+        $('#appreciation').empty();
+        if($('#firstNote').val() && $('#secondNote').val() && $('#thirdNote').val() && $('#fourthNote').val() && $('#lastNote').val() && parseFloat($('#firstNote').val())<=20 && parseFloat($('#secondNote').val())<=20 && parseFloat($('#thirdNote').val())<=20 && parseFloat($('#fourthNote').val())<=20 && parseFloat($('#lastNote').val())<=20){
+          var average = (parseFloat($('#firstNote').val())+parseFloat($('#secondNote').val())+parseFloat($('#thirdNote').val())+parseFloat($('#fourthNote').val())+parseFloat($('#lastNote').val()))/5;
+          if(average < 10){
+            $('#appreciation').append('votre moyenne est de : ' + average + '<br />' + 'En dessous de la moyenne');
+          }else if (average >=10 && average <13) {
+            $('#appreciation').append('votre moyenne est de : ' + average + '<br />' + 'Moyen');
+          }else if (average >=13 && average <16) {
+            $('#appreciation').append('votre moyenne est de : ' + average + '<br />' + 'Bien');
+          }else if (average >=16 && average <20) {
+            $('#appreciation').append('votre moyenne est de : ' + average + '<br />' + 'Très bien');
+          }else if (average >=20) {
+            $('#appreciation').append('votre moyenne est de : ' + average + '<br />' + 'Excellent');
+          }
+        }else{
+          $('#appreciation').append('saisir des notes');
+        }
+      });
+    });
+    </script>
+  </body>
+</html>
